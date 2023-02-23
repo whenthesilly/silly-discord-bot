@@ -19,7 +19,6 @@ def callJokeApi():
 
 
 bot = discord.Bot()
-guilds = ["1065613788470071337", "1064982464184979458", "1069252875525558372"]
 
 @bot.event
 async def on_ready():
