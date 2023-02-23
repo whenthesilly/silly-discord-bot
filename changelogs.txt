@@ -1,0 +1,4 @@
+Reid's cool bot Sigma Version 0.4.1
+
+Changelogs:
+•made commands global
