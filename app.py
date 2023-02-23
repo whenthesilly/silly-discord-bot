@@ -28,7 +28,7 @@ async def on_ready():
 
 @bot.slash_command(description = 'Basic command that greets you. Used to test uptime.')
 async def hello(ctx):
-    await ctx.respond(f"Hey, {ctx.author}!")
+    await ctx.respond(f"Salutations, {ctx.author}!")
 
 @bot.slash_command(description = 'Random number generator. Defaults to 1-10')
 async def pickrandom(ctx, min = 1, max = 10):
