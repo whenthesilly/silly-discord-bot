@@ -80,11 +80,10 @@ async def garfild(ctx, text: str):
         y_text += h2
 
     await ctx.respond(file=discord.File('/home/pi/discordBot/edit.jpg'))
-    
 
-
-
-    
+@bot.slash_command(description = "Links to the github")
+async def github(ctx):
+    await ctx.respond("https://github.com/reidthepog/Reid-s-discord-bot")
 
 
 token = config('TOKEN')
