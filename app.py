@@ -91,8 +91,8 @@ async def github(ctx):
     await ctx.respond("https://github.com/reidthepog/Reid-s-discord-bot")
 
 @bot.slash_command(description = "Gives you a random useless fact.")
-async def uselesfact(ctx):
-    ctx.respond(getFact())
+async def uselessfact(ctx):
+    await ctx.respond(getFact())
 
 
 token = config('TOKEN')
