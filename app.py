@@ -15,6 +15,11 @@ def callJokeApi():
         return str(data['joke'])
     elif data['type'] == 'twopart':
         return str(data['setup'] + '\n' + data['delivery'])
+    
+def getFact():
+    x = requests.get('https://uselessfacts.jsph.pl/api/v2/facts/random?language=en')
+    data = x.json()
+    return data['text']
         
 
 
@@ -84,6 +89,10 @@ async def garfild(ctx, text: str):
 @bot.slash_command(description = "Links to the github")
 async def github(ctx):
     await ctx.respond("https://github.com/reidthepog/Reid-s-discord-bot")
+
+@bot.slash_command(description = "Gives you a random useless fact.")
+async def uselesfact(ctx):
+    ctx.respond(getFact())
 
 
 token = config('TOKEN')
