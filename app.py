@@ -7,6 +7,14 @@ import requests
 from PIL import Image, ImageFont, ImageDraw
 import textwrap
 from decouple import config
+from uwuipy import uwuipy
+import calendar;
+import time;
+ts = calendar.timegm(time.gmtime())
+
+
+
+uwu = uwuipy(ts, 0.3, 0.3, 0.1, 0.5)
 
 def callJokeApi():
     x = requests.get('https://v2.jokeapi.dev/joke/Any?safe-mode')
@@ -93,6 +101,11 @@ async def github(ctx):
 @bot.slash_command(description = "Gives you a random useless fact.")
 async def uselessfact(ctx):
     await ctx.respond(getFact())
+
+@bot.slash_command(description = "uwuifies y-y-youw t-t-t-text. why did i-i-i make t-t-this d-d-d-dweadfuw (˘˘˘) command")
+async def uwu(ctx,msg):
+    await ctx.respond(uwu.uwuify(msg))
+
 
 
 token = config('TOKEN')

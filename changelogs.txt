@@ -1,4 +1,4 @@
-Reid's cool bot Sigma Version 0.4.2
+Reid's cool bot Sigma Version 0.4.3
 
 Changelogs:
-• added useless fact command
+• made the dreadful uwu command
