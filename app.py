@@ -102,7 +102,7 @@ async def github(ctx):
 async def uselessfact(ctx):
     await ctx.respond(getFact())
 
-@bot.slash_command(description = "uwuifies y-y-youw t-t-t-text. why did i-i-i make t-t-this d-d-d-dweadfuw (˘˘˘) command")
+@bot.slash_command(description = "uwuifies y-y-youw t-t-t-text.")
 async def uwu(ctx,msg):
     await ctx.respond(owo.uwuify(msg))
 

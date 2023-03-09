@@ -1,4 +1,4 @@
 Reid's cool bot Sigma Version 0.4.3
 
 Changelogs:
-• made the dreadful uwu command
+• made the wonderful uwu command
