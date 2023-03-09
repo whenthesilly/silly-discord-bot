@@ -14,7 +14,7 @@ ts = calendar.timegm(time.gmtime())
 
 
 
-uwu = uwuipy(ts, 0.3, 0.3, 0.1, 0.5)
+owo = uwuipy(ts, 0.3, 0.3, 0.1, 0.5)
 
 def callJokeApi():
     x = requests.get('https://v2.jokeapi.dev/joke/Any?safe-mode')
@@ -104,7 +104,7 @@ async def uselessfact(ctx):
 
 @bot.slash_command(description = "uwuifies y-y-youw t-t-t-text. why did i-i-i make t-t-this d-d-d-dweadfuw (˘˘˘) command")
 async def uwu(ctx,msg):
-    await ctx.respond(uwu.uwuify(msg))
+    await ctx.respond(owo.uwuify(msg))
 
 
 
