@@ -1,4 +1,5 @@
-Reid's cool bot Sigma Version 0.4.3
+Reid's cool bot Sigma Version 0.4.4
 
 Changelogs:
-• made the wonderful uwu command
+• silly cat command 
+• blackified code

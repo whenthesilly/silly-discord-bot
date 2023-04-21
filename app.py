@@ -122,7 +122,13 @@ async def uwu(ctx, msg):
     await ctx.respond(owo.uwuify(msg))
 
 
-# @bot.slash_command(description = "meow miaw purr nya ")
+@bot.slash_command(description="meow miaw purr nya~")
+async def cat(ctx):
+    r = requests.get("https://cataas.com/cat?json=true")
+    j = r.json()
+    urlbase = "https://cataas.com"
+    u = j["url"]
+    await ctx.respond("".join([urlbase, u]))
 
 
 token = config("TOKEN")
