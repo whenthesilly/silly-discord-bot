@@ -10,6 +10,9 @@ from decouple import config
 from uwuipy import uwuipy
 import calendar
 import time
+import pytz
+from suncalc import get_position
+import datetime
 
 ts = calendar.timegm(time.gmtime())
 
@@ -72,14 +75,14 @@ async def joke(ctx):
 
 @bot.slash_command(description="Shows current changelogs.")
 async def changelogs(ctx):
-    with open("/home/pi/discordBot/changelogs.txt", "r") as f:
+    with open("./changelogs.txt", "r") as f:
         data = f.read()
         await ctx.respond(data)
 
 
 @bot.slash_command(description="Credits people smarter than me for what they did.")
 async def credits(ctx):
-    with open("/home/pi/discordBot/credits.txt", "r") as f:
+    with open("./credits.txt", "r") as f:
         data = f.read()
         await ctx.respond(data)
 
@@ -88,9 +91,9 @@ async def credits(ctx):
     description="Makes the silly garflid image speak (image by @willy on wasteof)"
 )
 async def garfild(ctx, text: str):
-    font = ImageFont.truetype("/home/pi/discordBot/font.ttf", 30)
+    font = ImageFont.truetype("./font.ttf", 30)
     # font = ImageFont.load_default()
-    img = Image.open("/home/pi/discordBot/pic.jpg")
+    img = Image.open("./pic.jpg")
     cx, cy = (325, 100)
     lines = textwrap.wrap(text, width=17)
     w, h = font.getsize(text)
@@ -101,7 +104,7 @@ async def garfild(ctx, text: str):
         draw = ImageDraw.Draw(img)
 
         draw.text((cx - (w2 / 2), y_text), line, fill=(0, 0, 0), font=font)
-        img.save("/home/pi/discordBot/edit.jpg")
+        img.save("./edit.jpg")
         y_text += h2
 
     await ctx.respond(file=discord.File("/home/pi/discordBot/edit.jpg"))
@@ -134,6 +137,20 @@ async def cat(ctx):
 @bot.slash_command()
 async def newcommandswhen(ctx):
     await ctx.respond("soon :tm:", ephemeral=True)
+
+
+@bot.slash_command(
+    description="get the azimuth angle (https://en.wikipedia.org/wiki/Azimuth) of the sun in any place on earth by lat/long coords and timezone (will be improved)"
+)
+async def azimuth(ctx, latitude: int, longitude: int, timezone: str):
+    utcNow = datetime.datetime.utcnow()
+    try:
+        tz = pytz.timezone(timezone)
+        now = utcNow.astimezone(tz)
+        sunPos = get_position(now, latitude, longitude)
+        await ctx.response(f"Sun azimuth angle: {sunPos['azimuth']}")
+    except:
+        await ctx.respond("An error occured. Try different coordinates or timezone")
 
 
 token = config("TOKEN")
