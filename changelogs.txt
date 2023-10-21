@@ -1,4 +1,4 @@
-Reid's cool bot Sigma Version 0.4.4
+Super silly bot Version 0.4.4
 
 Changelogs:
 • silly cat command 

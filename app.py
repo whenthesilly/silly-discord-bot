@@ -131,5 +131,10 @@ async def cat(ctx):
     await ctx.respond("".join([urlbase, u]))
 
 
+@bot.slash_command()
+async def newcommandswhen(ctx):
+    await ctx.respond("soon :tm:", ephemeral=True)
+
+
 token = config("TOKEN")
 bot.run(token)
