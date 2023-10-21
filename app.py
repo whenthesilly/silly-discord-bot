@@ -140,7 +140,7 @@ async def newcommandswhen(ctx):
 
 
 @bot.slash_command(
-    description="get the azimuth angle (https://en.wikipedia.org/wiki/Azimuth) of the sun in any place on earth by lat/long coords and timezone (will be improved)"
+    description="get the azimuth angle (https://en.wikipedia.org/wiki/Azimuth) of the sun in any place on earth"
 )
 async def azimuth(ctx, latitude: int, longitude: int, timezone: str):
     utcNow = datetime.datetime.utcnow()

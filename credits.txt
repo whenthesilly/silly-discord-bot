@@ -1,5 +1,7 @@
-Credits:
-•Pfp by https://wasteof.money/twyx
-•garfild command fixed by <@!718830331356250202>
-•garfild image by https://wasteof.money/willy or <@!357219998558584832>
-•I used LDF comic sans because yes: https://www.fontspace.com/ldfcomicsans-font-f16951
+# Credits:
+
+* Pfp by https://wasteof.money/twyx
+* garfild command fixed by <@!718830331356250202>
+* garfild image by https://wasteof.money/willy or <@!357219998558584832>
+* actual comic sans from michealsoft
+* sun angle command made by <@!1034601595599597618>

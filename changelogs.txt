@@ -1,5 +1,5 @@
-Super silly bot Version 0.4.4
+# Super silly bot Version 0.5 (running changelogs for upcoming version)
 
 Changelogs:
-• silly cat command 
-• blackified code
+
+* added sun angle calculator thingy
