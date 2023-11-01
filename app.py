@@ -49,7 +49,7 @@ async def hello(ctx):
 
 
 @bot.slash_command(description="Random number generator. Defaults to 1-10")
-async def pickrandom(ctx, min=1, max=10):
+async def pickrandom(ctx, min: int = 1, max: int = 10):
     await ctx.respond("Your number is:" + str(random.randint(int(min), int(max))))
 
 
@@ -63,7 +63,7 @@ async def reload(ctx):
 
 
 @bot.slash_command(description="Says what you said! Says what you said!")
-async def echo(ctx, text):
+async def echo(ctx, text: str):
     message = text.replace("@", "@​")
     await ctx.respond(f"You said: {message}")
 
@@ -127,11 +127,9 @@ async def uwu(ctx, msg):
 
 @bot.slash_command(description="meow miaw purr nya~")
 async def cat(ctx):
-    r = requests.get("https://cataas.com/cat?json=true")
-    j = r.json()
-    urlbase = "https://cataas.com"
-    u = j["url"]
-    await ctx.respond("".join([urlbase, u]))
+    await ctx.respond(
+        f"https://cataas.com/cat?cacheRefresh={random.randint(0,1000000)}"
+    )
 
 
 @bot.slash_command()
@@ -142,15 +140,17 @@ async def newcommandswhen(ctx):
 @bot.slash_command(
     description="get the azimuth angle (https://en.wikipedia.org/wiki/Azimuth) of the sun in any place on earth"
 )
-async def azimuth(ctx, latitude: int, longitude: int, timezone: str):
+async def azimuth(ctx, latitude: float, longitude: float, timezone: str):
     utcNow = datetime.datetime.utcnow()
     try:
         tz = pytz.timezone(timezone)
         now = utcNow.astimezone(tz)
         sunPos = get_position(now, latitude, longitude)
-        await ctx.response(f"Sun azimuth angle: {sunPos['azimuth']}")
-    except:
-        await ctx.respond("An error occured. Try different coordinates or timezone")
+        await ctx.respond(f"Sun azimuth angle: {sunPos['azimuth']}")
+    except Exception as e:
+        await ctx.respond(
+            f"An error occured. Try different coordinates or timezone. \n ```{e}```"
+        )
 
 
 token = config("TOKEN")
