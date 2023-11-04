@@ -1,0 +1,27 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitType": "docs",
+  "commitConvention": "angular",
+  "contributors": [
+    {
+      "login": "radeeyate",
+      "name": "radeeyate",
+      "avatar_url": "https://avatars.githubusercontent.com/u/124477460?v=4",
+      "profile": "http://radi8.dev",
+      "contributions": [
+        "code",
+        "bug"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "skipCi": true,
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "projectName": "Reids-discord-bot",
+  "projectOwner": "reidthepog"
+}
