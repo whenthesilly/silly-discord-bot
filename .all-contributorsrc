@@ -26,6 +26,15 @@
       "contributions": [
         "code"
       ]
+    },
+    {
+      "login": "wuilly",
+      "name": "wuilly",
+      "avatar_url": "https://avatars.githubusercontent.com/u/15482775?v=4",
+      "profile": "https://github.com/wuilly",
+      "contributions": [
+        "design"
+      ]
     }
   ],
   "contributorsPerLine": 7,
