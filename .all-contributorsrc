@@ -26,8 +26,8 @@
       "contributions": [
         "code"
       ]
-    },
-  ]
+    }
+  ],
   "contributorsPerLine": 7,
   "skipCi": true,
   "repoType": "github",
