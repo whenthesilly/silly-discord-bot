@@ -107,12 +107,12 @@ async def garfild(ctx, text: str):
         img.save("./edit.jpg")
         y_text += h2
 
-    await ctx.respond(file=discord.File("/home/pi/discordBot/edit.jpg"))
+    await ctx.respond(file=discord.File("./edit.jpg"))
 
 
 @bot.slash_command(description="Links to the github")
 async def github(ctx):
-    await ctx.respond("https://github.com/reidthepog/Reid-s-discord-bot")
+    await ctx.respond("https://github.com/whenthesilly/silly-discord-bot")
 
 
 @bot.slash_command(description="Gives you a random useless fact.")
@@ -127,14 +127,9 @@ async def uwu(ctx, msg):
 
 @bot.slash_command(description="meow miaw purr nya~")
 async def cat(ctx):
-    await ctx.respond(
-        f"https://cataas.com/cat?cacheRefresh={random.randint(0,1000000)}"
-    )
-
-
-@bot.slash_command()
-async def newcommandswhen(ctx):
-    await ctx.respond("soon :tm:", ephemeral=True)
+    r = requests.get("https://cataas.com/cat")
+    open("./cat.jpg", "wb").write(r.content)
+    await ctx.respond(file=discord.File("./cat.jpg"))
 
 
 @bot.slash_command(
