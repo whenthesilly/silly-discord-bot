@@ -12,7 +12,9 @@ import calendar
 import time
 import pytz
 from suncalc import get_position
+from datetime import datetime as dt
 import datetime
+import wasteof
 
 ts = calendar.timegm(time.gmtime())
 
@@ -146,6 +148,57 @@ async def azimuth(ctx, latitude: float, longitude: float, timezone: str):
         await ctx.respond(
             f"An error occured. Try different coordinates or timezone. \n ```{e}```"
         )
+
+
+@bot.slash_command(
+    description="displays wasteof user info", guild_ids=["1065613788470071337"]
+)
+async def womuser(ctx, user: str):
+    if not wasteof.users.isUserAvailable(username=user):
+        info = wasteof.users.get(username=user)
+        name = info["name"]
+        if info["verified"]:
+            name = name + " <:Verified:1115381015943319612>"
+        if info["permissions"]["admin"]:
+            name = name + " <:Admin:1115380983395532860>"
+        if info["beta"]:
+            name = name + " <:Beta:1117853412994846730>"
+        if info["online"]:
+            name = name + "  🟢"
+
+        if info["color"] == "red":
+            colour = 0xf87171
+        elif info["color"] == "orange":
+            colour = 0xfb923c
+        elif info["color"] == "yellow":
+            colour = 0xfacc15
+        elif info["color"] == "green":
+            colour = 0x4ade80
+        elif info["color"] == "teal":
+            colour = 0x2dd4bf
+        elif info["color"] == "blue":
+            colour = 0x60a5fa
+        elif info["color"] == "indigo":
+            colour = 0x818cf8
+        elif info["color"] == "fuchsia":
+            colour = 0xe879f9
+        elif info["color"] == "gray":
+            colour = 0x9ca3af
+
+        embed = discord.Embed(
+            title=name,
+            description=info["bio"],
+            color=colour,
+        )
+        if "history" in info:
+            embed.add_field(name="Join date: (d/m/y)", value=dt.utcfromtimestamp(info["history"]["joined"]/1000).strftime('%d/%m/%Y at %H:%M:%S'), inline=True)
+        embed.add_field(name="Followers:", value=info["stats"]["followers"], inline=True)
+        embed.add_field(name="Following:", value=info["stats"]["following"], inline=True)
+        embed.add_field(name="Posts:", value=info["stats"]["posts"], inline=True)
+        embed.set_thumbnail(url=f"https://api.wasteof.money/users/{user}/picture")
+        await ctx.respond(embed=embed)
+    else:
+        await ctx.respond("User not found!", ephemeral=True)
 
 
 token = config("TOKEN")
