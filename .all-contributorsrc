@@ -35,12 +35,21 @@
       "contributions": [
         "design"
       ]
+    },
+    {
+      "login": "Bluh7",
+      "name": "Blu",
+      "avatar_url": "https://avatars.githubusercontent.com/u/94490806?v=4",
+      "profile": "https://github.com/Bluh7",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
   "skipCi": true,
   "repoType": "github",
   "repoHost": "https://github.com",
-  "projectName": "Reids-discord-bot",
-  "projectOwner": "reidthepog"
+  "projectName": "silly-discord-bot",
+  "projectOwner": "whenthesilly"
 }
