@@ -184,7 +184,7 @@ async def womuser(ctx, user: str):
         elif info["color"] == "gray":
             colour = 0x9CA3AF
         elif info["color"] == "pink":
-            colour = 0xec4899
+            colour = 0xEC4899
         else:
             colour = 0x818CF8
             colerror = info["color"]
@@ -202,12 +202,8 @@ async def womuser(ctx, user: str):
                 value=f"<t:{timestamp}> (<t:{timestamp}:R>)",
                 inline=True,
             )
-        embed.add_field(
-            name="Followers", value=info["stats"]["followers"], inline=True
-        )
-        embed.add_field(
-            name="Following", value=info["stats"]["following"], inline=True
-        )
+        embed.add_field(name="Followers", value=info["stats"]["followers"], inline=True)
+        embed.add_field(name="Following", value=info["stats"]["following"], inline=True)
         embed.add_field(name="Posts", value=info["stats"]["posts"], inline=True)
         embed.set_thumbnail(url=f"https://api.wasteof.money/users/{user}/picture")
         await ctx.respond(embed=embed)
