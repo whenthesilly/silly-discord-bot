@@ -183,6 +183,12 @@ async def womuser(ctx, user: str):
             colour = 0xE879F9
         elif info["color"] == "gray":
             colour = 0x9CA3AF
+        elif info["color"] == "pink":
+            colour = 0xec4899
+        else:
+            colour = 0x818CF8
+            colerror = info["color"]
+            print(f"{user}'s colour {colerror} not recognized. defaulting to indigo.")
 
         embed = discord.Embed(
             title=name,
@@ -192,17 +198,17 @@ async def womuser(ctx, user: str):
         if "history" in info:
             timestamp = info["history"]["joined"] // 1000
             embed.add_field(
-                name="Join date: (d/m/y)",
+                name="Join date",
                 value=f"<t:{timestamp}> (<t:{timestamp}:R>)",
                 inline=True,
             )
         embed.add_field(
-            name="Followers:", value=info["stats"]["followers"], inline=True
+            name="Followers", value=info["stats"]["followers"], inline=True
         )
         embed.add_field(
-            name="Following:", value=info["stats"]["following"], inline=True
+            name="Following", value=info["stats"]["following"], inline=True
         )
-        embed.add_field(name="Posts:", value=info["stats"]["posts"], inline=True)
+        embed.add_field(name="Posts", value=info["stats"]["posts"], inline=True)
         embed.set_thumbnail(url=f"https://api.wasteof.money/users/{user}/picture")
         await ctx.respond(embed=embed)
     else:
