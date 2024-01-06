@@ -190,13 +190,10 @@ async def womuser(ctx, user: str):
             color=colour,
         )
         if "history" in info:
-            timestamp = info["history"]["joined"]/1000
-            datejoined = dt.utcfromtimestamp(timestamp).strftime(
-                "%d/%m/%Y at %H:%M:%S"
-            )
+            timestamp = info["history"]["joined"] // 1000
             embed.add_field(
                 name="Join date: (d/m/y)",
-                value=f"{datejoined} (<t:{int(timestamp)}:R>)",
+                value=f"<t:{timestamp}> (<t:{timestamp}:R>)",
                 inline=True,
             )
         embed.add_field(
