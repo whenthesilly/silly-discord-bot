@@ -24,6 +24,10 @@ owo = uwuipy(ts, 0.3, 0.3, 0.1, 0.5)
 
 def callJokeApi():
     x = requests.get("https://v2.jokeapi.dev/joke/Any?safe-mode")
+
+    if x.status_code != 200:
+        return "Sowwy, I can't tell you a joke right now. Try again later."
+
     data = x.json()
     if data["type"] == "single":
         return str(data["joke"])
@@ -33,6 +37,10 @@ def callJokeApi():
 
 def getFact():
     x = requests.get("https://uselessfacts.jsph.pl/api/v2/facts/random?language=en")
+
+    if x.status_code != 200:
+        return "Sowwy, I can't tell you a fact right now. Try again later."
+
     data = x.json()
     return data["text"]
 
@@ -165,30 +173,33 @@ async def womuser(ctx, user: str):
         if info["online"]:
             name = name + "  🟢"
 
-        if info["color"] == "red":
-            colour = 0xF87171
-        elif info["color"] == "orange":
-            colour = 0xFB923C
-        elif info["color"] == "yellow":
-            colour = 0xFACC15
-        elif info["color"] == "green":
-            colour = 0x4ADE80
-        elif info["color"] == "teal":
-            colour = 0x2DD4BF
-        elif info["color"] == "blue":
-            colour = 0x60A5FA
-        elif info["color"] == "indigo":
-            colour = 0x818CF8
-        elif info["color"] == "fuchsia":
-            colour = 0xE879F9
-        elif info["color"] == "gray":
-            colour = 0x9CA3AF
-        elif info["color"] == "pink":
-            colour = 0xec4899
-        else:
-            colour = 0x818CF8
-            colerror = info["color"]
-            print(f"{user}'s colour {colerror} not recognized. defaulting to indigo.")
+        match info["color"]:
+            case "red":
+                colour = 0xF87171
+            case "orange":
+                colour = 0xFB923C
+            case "yellow":
+                colour = 0xFACC15
+            case "green":
+                colour = 0x4ADE80
+            case "teal":
+                colour = 0x2DD4BF
+            case "blue":
+                colour = 0x60A5FA
+            case "indigo":
+                colour = 0x818CF8
+            case "fuchsia":
+                colour = 0xE879F9
+            case "gray":
+                colour = 0x9CA3AF
+            case "pink":
+                colour = 0xEC4899
+            case _:
+                colour = 0x818CF8
+                colerror = info["color"]
+                print(
+                    f"{user}'s colour {colerror} not recognized. defaulting to indigo."
+                )
 
         embed = discord.Embed(
             title=name,
@@ -202,12 +213,8 @@ async def womuser(ctx, user: str):
                 value=f"<t:{timestamp}> (<t:{timestamp}:R>)",
                 inline=True,
             )
-        embed.add_field(
-            name="Followers", value=info["stats"]["followers"], inline=True
-        )
-        embed.add_field(
-            name="Following", value=info["stats"]["following"], inline=True
-        )
+        embed.add_field(name="Followers", value=info["stats"]["followers"], inline=True)
+        embed.add_field(name="Following", value=info["stats"]["following"], inline=True)
         embed.add_field(name="Posts", value=info["stats"]["posts"], inline=True)
         embed.set_thumbnail(url=f"https://api.wasteof.money/users/{user}/picture")
         await ctx.respond(embed=embed)
