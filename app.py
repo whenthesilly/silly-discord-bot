@@ -155,7 +155,7 @@ async def womuser(ctx, user: str):
     if not wasteof.users.isUserAvailable(username=user):
         info = wasteof.users.get(username=user)
         name = info["name"]
-        
+
         if info["verified"]:
             name = name + " <:Verified:1115381015943319612>"
         if info["permissions"]["admin"]:
@@ -190,11 +190,13 @@ async def womuser(ctx, user: str):
             color=colour,
         )
         if "history" in info:
+            timestamp = info["history"]["joined"]/1000
+            datejoined = dt.utcfromtimestamp(timestamp).strftime(
+                "%d/%m/%Y at %H:%M:%S"
+            )
             embed.add_field(
                 name="Join date: (d/m/y)",
-                value=dt.utcfromtimestamp(info["history"]["joined"] / 1000).strftime(
-                    "%d/%m/%Y at %H:%M:%S"
-                ),
+                value=f"{datejoined} (<t:{int(timestamp)}:R>)",
                 inline=True,
             )
         embed.add_field(
