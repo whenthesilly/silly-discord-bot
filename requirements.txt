@@ -1,4 +1,4 @@
-discord.py==2.2.2
+py-cord==2.2.2
 Pillow==10.1.0
 python-decouple==3.8
 pytz==2021.1
