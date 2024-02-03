@@ -1,0 +1,3 @@
+[submodule "wasteof.py"]
+	path = wasteof.py
+	url = https://github.com/whenthesilly/wasteof.py.git

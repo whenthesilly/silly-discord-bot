@@ -14,6 +14,7 @@ import pytz
 from suncalc import get_position
 from datetime import datetime as dt
 import datetime
+sys.path.append('./wasteof.py')
 import wasteof
 
 ts = calendar.timegm(time.gmtime())
@@ -63,13 +64,13 @@ async def pickrandom(ctx, min: int = 1, max: int = 10):
     await ctx.respond("Your number is:" + str(random.randint(int(min), int(max))))
 
 
-@bot.slash_command(
-    guild_ids=["1065613788470071337"],
-    description="Applies the latest changes globally.",
-)
-async def reload(ctx):
-    await ctx.respond("Reloading...")
-    await subprocess.call([sys.executable, os.path.realpath(__file__)] + sys.argv[1:])
+# @bot.slash_command(
+#     guild_ids=["1065613788470071337"],
+#     description="Applies the latest changes globally.",
+# )
+# async def reload(ctx):
+#     await ctx.respond("Reloading...")
+#     await subprocess.call([sys.executable, os.path.realpath(__file__)] + sys.argv[1:])
 
 
 @bot.slash_command(description="Says what you said! Says what you said!")
