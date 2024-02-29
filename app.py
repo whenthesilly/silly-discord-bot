@@ -14,7 +14,8 @@ import pytz
 from suncalc import get_position
 from datetime import datetime as dt
 import datetime
-sys.path.append('./wasteof.py')
+
+sys.path.append("./wasteof.py")
 import wasteof
 
 ts = calendar.timegm(time.gmtime())
@@ -206,6 +207,7 @@ async def womuser(ctx, user: str):
             title=name,
             description=info["bio"],
             color=colour,
+            url=f"https://wasteof.money/{user}",
         )
         if "history" in info:
             timestamp = info["history"]["joined"] // 1000
